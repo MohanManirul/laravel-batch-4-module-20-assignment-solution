@@ -62,9 +62,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
  
-
+// you can also use keyup 
     $(document).ready(function() {
-        $('#search').on('keyup', function() {
+        $('#search').on('input', function() {
             // debugger;
             let query = $(this).val();
           
