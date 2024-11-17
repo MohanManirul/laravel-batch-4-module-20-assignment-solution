@@ -16,9 +16,19 @@ class ProductController extends Controller
      *
      * @return response()
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $products = Product::latest()->paginate(5);
+        $sortBy = $request->get('sortBy', 'name'); // Default sorting by name
+
+          // Check for sort query parameter and apply sorting
+        $sortOrder = $request->get('sort', 'asc'); // Default sort is ascending
+        if ($sortOrder === 'desc') {
+            $sortOrder = 'desc';
+        } else {
+            $sortOrder = 'asc';
+        }
+
+        $products = Product::orderBy($sortBy, $sortOrder)->latest()->paginate(5);
         
         return view('products.index',compact('products'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

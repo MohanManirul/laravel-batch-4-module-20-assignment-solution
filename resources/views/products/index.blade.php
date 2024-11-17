@@ -22,11 +22,22 @@
                 <tr>
                     <th width="80px">No</th>
                     <th>Image</th>
-                    <th>Name</th>
-                    <th>Details</th>
+                    <th>
+                        <a href="{{ route('products.index', ['sortBy' => 'name', 'sort' => request('sort') == 'asc' ? 'desc' : 'asc']) }}">
+                            Name
+                            <i class="fa {{ request('sortBy') == 'name' && request('sort') == 'asc' ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ route('products.index', ['sortBy' => 'detail', 'sort' => request('sort') == 'asc' ? 'desc' : 'asc']) }}">
+                            Details
+                            <i class="fa {{ request('sortBy') == 'detail' && request('sort') == 'asc' ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
+                        </a>
+                    </th>
                     <th width="250px">Action</th>
                 </tr>
             </thead>
+            
   
             <tbody>
                 @foreach ($products as $product)
