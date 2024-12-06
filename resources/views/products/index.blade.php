@@ -19,7 +19,7 @@
   
         <table class="table table-bordered table-striped mt-4">
             <thead>
-                <tr>
+                <tr>  
                     <th width="80px">No</th>
                     <th>Image</th>
                     <th>
@@ -81,7 +81,7 @@
             // debugger;
             let query = $(this).val();
           
-            $.ajax({
+            $.ajax({ 
                 url: "{{ route('products.search') }}",
                 type: 'GET',
                 data: { 'query': query },
